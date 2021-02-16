@@ -36,131 +36,109 @@ public class MainActivity extends AppCompatActivity {
         btmultiplication = findViewById(R.id.btmultiplication);
         btsubtraction = findViewById(R.id.btsubtraction);
         btadd = findViewById(R.id.btadd);
-
-
-
         sandar = findViewById(R.id.sandar);
-        button0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("0");
-            }
-        });
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("1");
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("2");
-            }
-        });
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("3");
-            }
-        });
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("4");
-            }
-        });
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("5");
-            }
-        });
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("6");
-            }
-        });
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("7");
-            }
-        });
-        button8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("8");
-            }
-        });
-        button9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("9");
-            }
-        });
-        button02.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("00");
-            }
-        });
-        buttonclear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("x");
-            }
-        });
-        buttonpercent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("%");
-            }
-        });
-        buttonoshiru.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("icon");
-            }
-        });
-        btto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText(".");
-            }
-        });
-        btten.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("=");
-            }
-        });
-        btdivision.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("/");
-            }
-        });
-        btmultiplication.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("*");
-            }
-        });
-        btsubtraction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("-");
-            }
-        });
-        btadd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                sandar.setText("+");
-            }
-        });
 
+        View.OnClickListener buttonsandar = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sanaldyngy = sandar.getText().toString();
+                String result = "";
+                String ayagy= ";";
+                switch(v.getId()){
+
+                    case R.id.btn0:
+                        result = "0";
+                        break;
+
+                    case R.id.btn1:
+                        result = "1";
+                        break;
+
+                    case R.id.btn2:
+                        result = "2";
+                        break;
+
+                    case R.id.btn3:
+                        result = "3";
+                        break;
+
+                    case R.id.btn4:
+                        result = "4";
+                        break;
+
+                    case R.id.btn5:
+                        result = "5";
+                        break;
+
+                    case R.id.btn6:
+
+                        result = "6";
+                        break;
+                    case R.id.btn7:
+                        result = "7";
+                        break;
+
+                    case R.id.btn8:
+                        result = "8";
+                        break;
+
+                    case R.id.btn9:
+                        result = "9";
+                        break;
+                    case R.id.button02:
+                        result = "00";
+                        break;
+
+                }
+                if(!sanaldyngy.equals("0")) ayagy= sanaldyngy+result;
+                else ayagy = result;
+                sandar.setText(ayagy);
+
+            }
+
+
+        };
+        button0.setOnClickListener(buttonsandar);
+        button1.setOnClickListener(buttonsandar);
+        button2.setOnClickListener(buttonsandar);
+        button3.setOnClickListener(buttonsandar);
+        button4.setOnClickListener(buttonsandar);
+        button5.setOnClickListener(buttonsandar);
+        button6.setOnClickListener(buttonsandar);
+        button7.setOnClickListener(buttonsandar);
+        button8.setOnClickListener(buttonsandar);
+        button9.setOnClickListener(buttonsandar);
+
+        View.OnClickListener buttonoshiruPlusMinus = new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                switch (v.getId()){
+                    case R.id.buttonclear:
+                        sandar.setText("0");
+                        break;
+
+                    case R.id.buttonoshiru:
+                        String sanText = sandar.getText().toString();
+                        int san = Integer.parseInt(sanText);
+
+                        if(san > 0) sandar.setText("-"+ sanText);
+                        else{
+                            san = san * (-1);
+                            sandar.setText("" + san);
+                        }
+
+
+                        break;
+                }
+            }
+        };
+        buttonclear.setOnClickListener(buttonoshiruPlusMinus);
+        buttonoshiru.setOnClickListener(buttonoshiruPlusMinus);
+
+
+    }
 
 
 
